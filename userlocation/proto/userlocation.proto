@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package userlocation;
+
+option go_package = "github.com/Clement-Jean/grpc-go-course/userlocation/proto";
+
+message SaveLocationRequest {
+  string UserName = 1;
+  double Latitude = 2;
+  double Longitude = 3;
+}
+
+message SaveLocationResponse {
+  string Message = 1;
+}
+
+message Location {
+  string UserName = 1;
+  double Latitude = 2;
+  double Longitude = 3;
+}
+
+message GetUsersByLocationAndRadiusRequest {
+  double Latitude = 1;
+  double Longitude = 2;
+  double Radius = 3;
+  uint64 Page = 4;
+  uint64 ItemsLimit = 5;
+}
+
+message GetUsersByLocationAndRadiusResponse {
+  repeated Location Users = 1;
+  uint64 TotalPages = 2;
+  uint64 TotalItems = 3;
+}
+
+service UserLocationService {
+  rpc SaveLocation(SaveLocationRequest) returns (SaveLocationResponse);
+  rpc GetUsersByLocationAndRadius(GetUsersByLocationAndRadiusRequest) returns (GetUsersByLocationAndRadiusResponse);
+};
