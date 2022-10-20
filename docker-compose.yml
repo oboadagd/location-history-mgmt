@@ -11,6 +11,10 @@ services:
       dockerfile: ./Dockerfile
     environment:
       - DB_HOST=172.18.0.2
+      - DB_USER=locuser
+      - DB_PASS=root
+      - DB_NAME=locationdb
+      - DB_PORT=5432
     ports:
       - "8080:8080"
     depends_on:
