@@ -61,9 +61,9 @@ func StartApp() {
 	locationService := service.NewLocationService(locationRepository, locationHistoryRepository)
 	locationController := controller.NewLocationController(locationService)
 
-	errorHanlderMiddle := middleKit.NewErrorHandlerMiddleware()
+	errorHandlerMiddle := middleKit.NewErrorHandlerMiddleware()
 
-	r := router.NewRouter(echoInstance, locationController, errorHanlderMiddle)
+	r := router.NewRouter(echoInstance, locationController, errorHandlerMiddle)
 	r.Init()
 
 	go func() {
